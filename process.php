@@ -46,7 +46,7 @@ if( isset($_POST) ){
      
     //send email if all is ok
     if($formok){
-        $headers = "From: info@example.com" . "\r\n";
+        $headers = "From: federicogarzaramirez.com.mx" . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
          
         $emailbody = "<p>¡Alguien quiere contactarte, mi Fede!</p>
@@ -55,7 +55,7 @@ if( isset($_POST) ){
                       <p><strong>Mensaje: </strong> {$message} </p>
                       <p>Este mensaje fue enviado desde la dirección IP: {$ipaddress} on {$date} at {$time}</p>";
          
-        mail("enquiries@example.com","New Enquiry",$emailbody,$headers);
+        mail("fede.garza.ramirez@gmail.com","¡Nuevo mensaje, Fede!",$emailbody,$headers);
          
     }
      
