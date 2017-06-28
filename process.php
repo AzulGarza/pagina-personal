@@ -39,10 +39,10 @@ if( isset($_POST) ){
         $errors[] = "No has introducido tu mensaje. :(";
     }
     //validate message is greater than 20 characters
-    elseif(strlen($message) < 15){
-        $formok = false;
-        $errors[] = "Tu mensaje debe contener más de 15 caracteres.";
-    }
+    // elseif(strlen($message) < 15){
+    //    $formok = false;
+    //    $errors[] = "Tu mensaje debe contener más de 15 caracteres.";
+    //}
      
     //send email if all is ok
     if($formok){
