@@ -1,0 +1,70 @@
+#Modelo con un solo bien, dotación y términos de intercambio
+
+## Términos de intercambio
+
+En este modelo se introduce la variable $\Omega_s$ que denota el precio de las exportaciones respecto al precio de las importaciones para cada $s \geq t$. Se supone un país pequeño por lo que la secuencia $\{\Omega_s\}_{s \geq t}$ está dada. 
+
+## Problema de optimización
+
+El objetivo del agente representativo es
+
+$$
+\max_{c_s, b_{s+1}, s \geq t} \{ \sum_{s\geq t} \beta^{s-t}\ln(c_s):  c_s + b_{s+1} = \Omega_s y_s + (1+r_{s-1})b_s, s \geq t\}
+$$
+
+En este problema están dados $\{y_s, r_{s-1}, \Omega_s\}_{s\geq t}$ y $b_t$. Se asume que $y_s$ se exporta por completo y $c_s$ se importa.
+ 
+Por otro lado, se define
+
+$$
+T_s = \Omega_s y_s- c_s
+$$
+La balanza comercial del país en el periodo $s$ y además
+
+$$
+CA_s = b_{s+1} - b_s = T_s + r_{s-1}b_s
+$$
+La cuenta corriente del país en el periodo $s$. La identidad anterior surge de la restricción presupuestal del agente representativo.  
+
+## Condiciones de primer orden
+
+En este problema se sigue sosteniendo la ecuación de optimalidad de euler. Para cada $s \geq t$,
+
+$$
+c_{s+1} = \beta(1 + r_{s})c_s
+$$
+
+## Restricción  presupuestal
+
+Iterando hacia adeltante con la restricción presupuestal del agente representativo a partir del periodo $s$ se obtiene que en el óptimo,
+
+$$
+\sum_{j\geq s} \Delta_jT_j = -(1+r_{s-1})b_s 
+$$
+O bien,
+
+$$
+\begin{equation}
+\sum_{j\geq s} \Delta_jc_j = (1+r_{s-1})b_s  + \sum_{j\geq s} \Delta_j\Omega_j y_j
+\end{equation}  
+$$
+
+*En particular* para el periodo $t$ se verifica que,
+
+$$
+\sum_{s \geq t} \Delta_s c_s = (1+r_{t-1})b_t + \sum_{s \geq t} \Delta_s \Omega_s y_s
+$$
+
+## Solución 
+
+Iterando la ecuación de euler como en el capítulo inicial obetenemos que para cada $s \geq t$,
+
+$$
+c_s = (1-\beta)(1+r_{s-1})b_s + \hat{\Omega_s y_s}
+$$
+
+Donde $\hat{\Omega_s y_s}$ es el valor permanente de la dotación en términos de las importaciones en el periodo $s$.
+
+## Ejemplo
+
+Los choques en los términos de intercambio son similares a los choques en la dotación.

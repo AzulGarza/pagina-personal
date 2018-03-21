@@ -1,0 +1,227 @@
+#Modelo con un solo bien y con dotación
+
+##Problema de optimización
+
+En este modelo en la economía existe un solo bien. En cada periodo la cantidad que consume el agente representativo se denota con $c_s$ para $s\geq t$. El objetivo del agente representativo es
+
+$$
+\max_{c_s, b_{s+1}, s \geq t} \{ \sum_{s\geq t} \beta^{s-t}\ln(c_s):  c_s + b_{s+1} = y_s + (1+r_{s-1})b_s, s \geq t\}
+$$
+En donde $b_s$ denota la cantidad del bien que el agente representativo ahorra en el periodo $s$, $y_s$ la dotación del bien en el periodo $s$ y $r_s$ la tasa de interés del periodo $s$. Además, en este problema están dados $\{y_s, r_{s-1}\}_{s\geq t}$ y $b_t$. 
+
+Por otro lado, se define
+
+$$
+T_s = y_s- c_s
+$$
+La balanza comercial del país en el periodo $s$ y además
+
+$$
+CA_s = b_{s+1} - b_s = T_s + r_{s-1}b_s
+$$
+La cuenta corriente del país en el periodo $s$. La identidad anterior surge de la restricción presupuestal del agente representativo.  
+
+## Condiciones de primer orden
+
+De las condiciones de primer orden se obtiene la siguiente condición de optimalidad, conocida como la ecuación de euler,
+
+$$
+c_{s+1} = \beta(1+r_s)c_s
+$$
+Para cada $s \geq t$.
+
+## Restricción presupuestal 
+
+Para $s \geq t$ y $j \geq s$ definimos $\Delta_j$ como $\Delta_j = 1$ si $j = s$ y 
+
+$$
+\Delta_j = \prod_{k = s}^{j-1} \frac{1}{1+r_k}
+$$
+Para $j \geq s + 1$. Iterando hacia adeltante con la restricción presupuestal del agente representativo a partir del periodo $s$ se obtiene que en el óptimo,
+
+$$
+\sum_{j\geq s} \Delta_jT_j = -(1+r_{s-1})b_s 
+$$
+O bien,
+
+$$
+\begin{equation}
+\sum_{j\geq s} \Delta_jc_j = (1+r_{s-1})b_s  + \sum_{j\geq s} \Delta_jy_j
+(\#eq:rp)
+\end{equation}  
+$$
+
+*En particular* para el periodo $t$ se verifica que,
+
+$$
+\sum_{s \geq t} \Delta_s c_s = (1+r_{t-1})b_t + \sum_{s \geq t} \Delta_s y_s
+$$b_
+Con lo anterior estamos listos para establecer resultados a partir de supuestos sobre las variables dadas. Pero antes enunciemos un **resultado fundamental**.
+
+##Solución 
+
+De la ecuación de euler sabemos que $c_{s+1} = \beta(1+r_s)c_s$ para cada $s \geq t$. Luego, para cada periodo $s \geq t$ y $j \geq s$ se verfifica que,
+
+$$
+\begin{align}
+\Delta_jc_j &= \Delta_j \beta(1+r_{j-1}) c_{j-1} \\
+&= \beta \Delta_{j-1}c_{j-1}
+\end{align}
+$$
+Iterando lo anterior hasta el periodo $s$ obtenemos que,
+
+$$
+\Delta_j c_j = \beta^{j-s} \Delta_s c_s
+$$
+
+Por lo tanto,
+
+$$
+\sum_{j \geq s} \Delta_j c_j = \sum_{j\geq s} \beta^{j-s} \Delta_s c_s = \frac{\Delta_s c_s}{1-\beta}
+$$
+
+Sustituyendo la ecuación anterior en \@ref(eq:rp) obtenemos que para cualquier $s \geq t$,
+
+$$
+\begin{align}
+\Delta_s c_s &= (1-\beta)((1+r_{s-1})b_s + \sum_{j\geq s}\Delta_s y_s) \\
+&= (1-\beta)(1+r_{s-1})b_s + (1-\beta)\sum_{j\geq s}\Delta_s y_s \\
+&= (1-\beta)(1+r_{s-1})b_s + \hat{y_s}
+\end{align}
+$$
+
+Donde $\hat{y_s} = (1- \beta)\sum_{j\geq s} \beta^{j-s}y_j$ es el valor permanente de $y$ en el periodo $s$. Como $\Delta_s = 1$ en este caso, esto resuelve el problema pues el consumo para cada periodo $s \geq t$ está dado por,
+
+$$
+c_s = (1-\beta)(1+r_{s-1})b_s +\hat{y_s}
+$$
+
+Y todos los valores del lado derecho de la igualdad son conocidos. *En particular*, para $s = t$ se tiene que,
+
+$$
+\begin{equation}
+c_t = (1-\beta)(1+r_{t-1})b_t + \hat{y_t}
+(\#eq:cons)
+\end{equation}
+$$
+
+Este resultado es bastante general pues *se obtuvo a partir de la condición de optimalidad y la restricción presupuestal* **sin hacer supuestos sobre los parámetros del modelo**.
+
+## Supuestos habituales
+
+### Tasa de interés constante
+
+En este caso, se supone que $r_{s-1} = r^*$ para cada $s \geq t$. Por lo que,
+
+$$
+\Delta_s = \left(\frac{1}{1 + r^*}\right)^{s-t}
+$$
+
+### Consumo constante
+
+Se asume, además de la tasa de interés contante que, $\beta(1+r^*) = 1$. En este caso, $c = c_{s+1} = c_{s}$ para cada $s \geq t$ (a partir de la ecuación de euler). Así, se verifica que
+
+$$
+\Delta_s = \beta^{s-t}
+$$
+Con esto,
+
+$$
+\hat{y_s} = (1-\beta)\sum_{j \geq s}\beta^{j-s}y_j
+$$
+Obsérvese que $(1-\beta)(1+r^*) = 1 + r^* - \beta(1+r^*) = r^*$. Por lo tanto, a partir de \@ref(eq:cons),
+
+$$
+c = c_s = r^*b_s + \hat{y_s}
+$$
+
+De lo anterior se desprende que la cuenta corriente en el periodo $s$ está determinada por,
+
+$$
+CA_s = T_s + r^*b_s =  y_s - c_s + r^*b_s = y_s - \hat{y_s} 
+$$
+
+## Ejemplo
+
+Supongamos que $r_{s-1} = r^*$ para cada $s \geq t$ y que $\beta*(1+r^*) = 1$. Además, $y_s = y$ para cada $s\geq t$ y $b_t = 0$. Los dos primeros supuestos establecen que $c = r^*b_t + \hat{y_t}$. Del tercer supuesto se obtiene que 
+
+$$
+\hat{y_t} = (1-\beta)\sum_{s\geq t} \beta^{s-t} y_s = (1-\beta)y \sum_{s\geq t} \beta^{s-t} = y
+$$
+
+Por lo tanto, usando además el último supuesto, se tiene que $c = c_s = y$ para cada $s \geq t$. Con eso, claramente $T_s = CA_s = 0$ para cada $s\geq t$.
+
+### Choque
+
+Supongamos ahora que hay un choque en la dotación durante $h$ periodos. Formalmente, ahora $y_s = \lambda y$ com $\lambda < 1$ si $t \leq s \leq t+h-1$ y $y_s = y$ para cada $s \geq t+h$ y se mantiene el supuesto de que $b_t = 0$. Recordemos que, en general, se sigue sosteniendo que el consumo es constante y que,
+
+$$
+c = r^*b_t + \hat{y_t}
+$$
+
+Por lo que basta encontrar el valor permanente de la dotación en $t$. En general, si $t \leq s \leq t+h-1$ entonces,
+
+$$
+\begin{align*}
+\hat{y_s} &= (1-\beta)\sum_{j \geq s} \beta^{j-s}y_j \\
+&= (1-\beta)\left(\sum_{j = s}^{t+h-1}\beta^{j-s}\lambda y + \sum_{j \geq t+h} \beta^{j-s} y\right) \\
+& = (1-\beta)\left(\lambda y \sum_{j = s}^{t+h-1}\beta^{j-s} + y \sum_{j \geq t+h} \beta^{j-s }  \right) \\
+& = (1-\beta)\left(\frac{1-\beta^{h+(t-s)}}{1-\beta}\lambda y + \frac{\beta^{h+(t-s)}}{1-\beta}y\right) \\
+& = \left(1-\beta^{h+(t-s)}\right)\lambda y + \beta^{h+(t-s)} y
+\end{align*}
+$$
+
+Y si $s \geq t$ entonces $\hat{y_s} = y$. Por lo tanto, $\hat{y_t} = (1-\beta^h)\lambda y + \beta^h y$ y usando que $\beta_t = 0$, se verifica que $c = (1-\beta^h)\lambda y + \beta^h y$. Con esto, para $t \leq s \leq t+h-1$ se sostiente que,
+
+$$
+T_s = y_s - c_s = \lambda y - (1-\beta^h)\lambda y - \beta^h y = \beta^h(\lambda - 1)y < 0
+$$
+
+Por lo que durante el choque, se importan bienes. En cambio, para $s \geq t+h$ se tiene que ,
+
+$$
+\begin{align*}
+T_s &= y_s - c_s \\
+& = y -(1-\beta^h)\lambda y - \beta^h y \\
+& =  (1 - \lambda + \lambda \beta^h  - \beta^h)y \\
+& = (1-\lambda)(1-\beta^h)y > 0
+\end{align*}
+$$
+
+Por lo que tras el choque se exportan bienes. Por el lado de la cuenta corriente, si $t \leq s \leq t+h-1$ entonces
+
+$$
+\begin{align*}
+CA_s & = y_s - \hat{y_s} \\
+& = \lambda y - \left(1-\beta^{h+(t-s)}\right)\lambda y - \beta^{h+(t-s)} y \\
+& = \beta^{h +(t-s)}(\lambda-1)y < 0 
+\end{align*}
+$$
+
+Y si $s \geq t+h$ entonces claramente $CA_s = 0$. Con ,o anterior podemos determinar los niveles de ahorro. Recordemos que $CA_s = T_s + r^*b_s$. Así, para $t \leq s \leq t+h-1$,
+
+$$
+\beta^{h +(t-s)}(\lambda-1)y = CA_s = T_s + r^*b_s = \beta^h(\lambda - 1)y + r^*b_s
+$$
+Por lo tanto, dado que $\frac{1}{r^*} = 1-\beta$
+
+$$
+b_s = (1-\beta)\beta^h\left(\beta^{t-s} - 1\right)(\lambda-1)y < 0
+$$
+
+Por otro lado, si $s \geq t+h$ entonces, 
+
+$$
+0 = CA_s = T_s + r^* b_s = (1-\lambda)(1-\beta^h)y + r^* b_s
+$$
+
+Así, en este caso, 
+
+$$
+b_s = (1-\beta)(1-\beta^h)(\lambda-1)y < 0
+$$
+Por lo que en este choque, siempre hay deuda.
+
+### Choque permanente
+
+Supongamos el choque anterior pero de manera permanente. En este caso, $h \rightarrow \infty$, por lo que $b_s, CA_s, T_s \rightarrow 0$ y $c \rightarrow \lambda y$.
